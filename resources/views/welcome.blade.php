@@ -10,6 +10,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="{{ url('css/DashboardStyle.css') }}">  <!-- url kan ook asset -->
+
+<!--
         <style>
             html, body {
                 background-color: #fff;
@@ -62,6 +65,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        -->
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -88,7 +92,7 @@
                 </div>
 
                 <div class="title m-b-md">
-                    Marleeen
+                    Memory
                 </div>
 
             </div>
