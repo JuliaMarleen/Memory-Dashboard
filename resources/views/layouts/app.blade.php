@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/DashboardStyle.css') }}"> 
+
 </head>
 <body>
     <div id="app">
