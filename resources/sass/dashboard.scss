@@ -1,6 +1,6 @@
 html, body {
-    background-color: rgb(255, 255, 255);
-    color: #636b6f;
+    background-color: #9c2929;
+    color: #1f87bb;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
     height: 100vh;
@@ -46,5 +46,10 @@ html, body {
 }
 
 .m-b-md {
-    margin-bottom: 30px;
+    margin-bottom: 300px;
+}
+
+card{
+    width: 50px;
+    margin-bottom: 40px;
 }

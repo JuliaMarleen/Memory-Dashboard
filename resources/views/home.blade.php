@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Memory Dashboard</div>
+                <div class="card-header">Widget 1</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Memory Dashboard</div>
+                <div class="card-header">Widget 2</div>
 
                 <div class="card-body">
                     @if (session('status'))
