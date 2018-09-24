@@ -14,10 +14,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    <li>{{ Auth::user()->name }}</li>
                     <li>Appels eten</li>
                     <li>Hon uitlaten</li>
                     <li>Papier</li>
-                    <li>Joey</li>
+                    <li>Tas</li>
                     <li>Paraplu</li>
                     <li>DUO bellen</li>
                 </div>
