@@ -37,17 +37,13 @@
                         </div>
                     @endif
 
-                    <?php $names = DB::table('memories')->pluck('name');
+                    <?php $names = DB::table('todo')->pluck('name');
                     foreach ($names as $name) {?>
-                        <li>{{ $name }}<li>
+                        <li>{{ $name }}</li>
                     <?php
                     }
                     ?>
 
-                    
-                    <li>Eet 3 appels</li>
-                    <li>Drink 6 glazen water</li>
-                    <li>Maak wiskunde huiswerk</li>
                 </div>
             </div>
         </div>
