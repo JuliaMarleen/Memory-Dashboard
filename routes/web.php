@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {  //route is een class
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::prefix('/products')->group
+//     Route::get('/', ['uses' => 'PhotoController@index']);
+//     Route::get('/', )
+
+
+?>

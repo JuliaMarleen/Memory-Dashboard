@@ -15,13 +15,13 @@
                         </div>
                     @endif
 
-                    <li>{{ Auth::user()->name }}</li>
-                    <li>Appels eten</li>
-                    <li>Hon uitlaten</li>
-                    <li>Papier</li>
-                    <li>Tas</li>
-                    <li>Paraplu</li>
-                    <li>DUO bellen</li>
+                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }} </li>
+                    <li>{{ DB::table('memories')->where('id', '2')->value('priority') }} {{ DB::table('memories')->where('id', '2')->value('name') }} </li>
+                    <li>{{ DB::table('memories')->where('id', '3')->value('priority') }} {{ DB::table('memories')->where('id', '3')->value('name') }}</li>
+                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
+                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
+                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
+                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
                 </div>
             </div>
         </div>
@@ -36,6 +36,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    <?php $names = DB::table('memories')->pluck('name');
+                    foreach ($names as $name) {?>
+                        <li>{{ $name }}<li>
+                    <?php
+                    }
+                    ?>
+
+                    
                     <li>Eet 3 appels</li>
                     <li>Drink 6 glazen water</li>
                     <li>Maak wiskunde huiswerk</li>
