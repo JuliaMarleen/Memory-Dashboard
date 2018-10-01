@@ -78,7 +78,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
                     <li>Zonnig</li>
+                    <img class="img-fluid" src="zon.jpg" alt="Hawaii">
                 </div>
             </div>
         </div>
@@ -93,9 +95,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                <li>Hola</li>
-                <li>?Como estaaas?</li>
-                <li>Mesaa</li>
+
+                <?php $word = DB::table('spanish')->inRandomOrder()->value('word') ?>
+                <?php $translation = DB::table('spanish')->where('word', $word)->value('translation') ?>
+                <li> {{ $word }} = {{ $translation }} </li>
                 </div>
             </div>
         </div>

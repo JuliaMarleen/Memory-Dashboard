@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTodoTable extends Migration
+class CreateSpanishTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTodoTable extends Migration
      */
     public function up()
     {
-        Schema::create('todo', function (Blueprint $table) {
+        Schema::create('spanish', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('priority');
-            $table->integer('done');
+            $table->string('word');
+            $table->string('translation');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTodoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todo');
+        Schema::dropIfExists('spanish');
     }
 }
