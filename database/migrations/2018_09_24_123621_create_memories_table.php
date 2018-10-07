@@ -15,6 +15,7 @@ class CreateMemoriesTable extends Migration
     {
         Schema::create('memories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userId');
             $table->string('name');
             $table->integer('priority');
             $table->timestamps();

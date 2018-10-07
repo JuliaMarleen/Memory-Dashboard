@@ -15,6 +15,7 @@ class CreateSpanishTable extends Migration
     {
         Schema::create('spanish', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userId');
             $table->string('word');
             $table->string('translation');
             $table->timestamps();

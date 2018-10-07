@@ -15,6 +15,7 @@ class CreateTodoTable extends Migration
     {
         Schema::create('todo', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userId');
             $table->string('name');
             $table->integer('priority');
             $table->integer('done');

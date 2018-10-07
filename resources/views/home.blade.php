@@ -18,7 +18,7 @@
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }} </li>
                     <li>{{ DB::table('memories')->where('id', '2')->value('priority') }} {{ DB::table('memories')->where('id', '2')->value('name') }} </li>
                     <li>{{ DB::table('memories')->where('id', '3')->value('priority') }} {{ DB::table('memories')->where('id', '3')->value('name') }}</li>
-                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
+                    <li>{{ DB::table('memories')->where('id', '4')->value('priority') }} {{ DB::table('memories')->where('id', '4')->value('name') }}</li>
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
@@ -37,9 +37,55 @@
                         </div>
                     @endif
 
-                    <?php $names = DB::table('todo')->pluck('name');
+                    <?php
+                    //print_r($_POST);
+                    //var_dump($_FILES);
+                    //check of data verstuurd is
+                    if (isset($_POST['submit'])) {
+
+                    //data uit formulier halen
+                            $itemid = $_POST['id'];
+                            $currentuserid = $_POST['userId'];
+                            $name = $_POST['name'];
+                            $priority = $_POST['priority'];
+                            $done = $_POST['done'];
+                        
+                    //data naar database versturen
+                        $query = "INSERT INTO todo (id, userId, name, priority, done) 
+                            VALUES ('$itemid', '$currentuserid', '$name', '$image', '$done')";
+
+                    heidisql_query($db, $query);
+                    //database afsluiten
+                    heidisql_close($db);
+                    
+                    //terugsturen naar index.php
+                    header('location: app.blade.php');
+                    exit;
+                    }
+                    ?>
+
+                    <form action="" method="post">
+                    <?php $ids = DB::table('todo')->pluck('id'); //get the last id from database
+                    foreach($ids as $id) {
+                    }?>
+                    <input type="hidden" name="id" value={{$id+1}}> <!-- last id from database + 1 = new id -->
+                    <?php $userId = Auth::user()->id ?>
+                    <input type="hidden" name="userId" value={{$userId}}> <!-- add the user id -->
+                    New:
+                    <input type="text" name="name" value=""><br> <!-- new to do item -->
+                    Priority:
+                    <input type="radio" name="priority" value="1" checked> High <!-- which priority -->
+                    <input type="radio" name="priority" value="2"> Medium
+                    <input type="radio" name="priority" value="3"> Low <br>
+
+                    <input type="hidden" name="done" value="0"> <!-- if you make a new item it's never directly done -->
+                    <input type="submit" value="Save">
+                    </form><br>
+
+                    <?php $userId = Auth::user()->id ?>
+                    <?php $names = DB::table('todo')->where('userId', $userId)->pluck('name');
                     foreach ($names as $name) {?>
-                        <li>{{ $name }}</li>
+                        <li>{{ $name }}</li> <!-- printing the to do list -->
                     <?php
                     }
                     ?>
@@ -80,7 +126,7 @@
                     @endif
 
                     <li>Zonnig</li>
-                    <img class="img-fluid" src="zon.jpg" alt="Hawaii">
+                    <img class="img-fluid" src="zon.jpg" alt="Zon">
                 </div>
             </div>
         </div>
@@ -117,7 +163,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @endsection
