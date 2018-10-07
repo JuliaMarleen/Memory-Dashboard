@@ -22,6 +22,7 @@
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
                     <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
+                
                 </div>
             </div>
         </div>
@@ -44,27 +45,30 @@
                     if (isset($_POST['submit'])) {
 
                     //data uit formulier halen
-                            $itemid = $_POST['id'];
-                            $currentuserid = $_POST['userId'];
-                            $name = $_POST['name'];
-                            $priority = $_POST['priority'];
-                            $done = $_POST['done'];
+                        $itemid = $_POST['id'];
+                        $currentuserid = $_POST['userId'];
+                        $name = $_POST['name'];
+                        $priority = $_POST['priority'];
+                        $done = $_POST['done'];
                         
-                    //data naar database versturen
-                        $query = "INSERT INTO todo (id, userId, name, priority, done) 
-                            VALUES ('$itemid', '$currentuserid', '$name', '$image', '$done')";
+                    // //data naar database versturen
+                    //     $query = "INSERT INTO todo (id, userId, name, priority, done) 
+                    //         VALUES ('$itemid', '$currentuserid', '$name', '$image', '$done')";
 
-                    heidisql_query($db, $query);
-                    //database afsluiten
-                    heidisql_close($db);
+                    DB::insert('insert into todo (id, userId, name, priority, done) values (?, ?, ?, ?, ?)', [$itemid, $currentuserid, $name, $image, $done]);
+
+
+                    // heidisql_query($db, $query);
+                    //  //database afsluiten
+                    // heidisql_close($db);
                     
-                    //terugsturen naar index.php
-                    header('location: app.blade.php');
-                    exit;
+                    //terugsturen naar zelfde pagina
+                    // header('location: app.blade.php');
+                    // exit;
                     }
                     ?>
 
-                    <form action="" method="post">
+                    <form action="home.blade.php" method="post">
                     <?php $ids = DB::table('todo')->pluck('id'); //get the last id from database
                     foreach($ids as $id) {
                     }?>
