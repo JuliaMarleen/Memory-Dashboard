@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/todo/save', 'ToDoController@save')->name('todo.save')
+
 // Route::prefix('/products')->group
 //     Route::get('/', ['uses' => 'PhotoController@index']);
 //     Route::get('/', )

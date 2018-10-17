@@ -9,6 +9,7 @@
                 <div class="card-header">To Remember</div>
 
                 <div class="card-body">
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -42,20 +43,20 @@
                     //print_r($_POST);
                     //var_dump($_FILES);
                     //check of data verstuurd is
-                    if (isset($_POST['submit'])) {
+                    // if (isset($_POST['submit'])) {
 
                     //data uit formulier halen
-                        $itemid = $_POST['id'];
-                        $currentuserid = $_POST['userId'];
-                        $name = $_POST['name'];
-                        $priority = $_POST['priority'];
-                        $done = $_POST['done'];
+                        // $itemid = $_POST['id'];
+                        // $currentuserid = $_POST['userId'];
+                        // $name = $_POST['name'];
+                        // $priority = $_POST['priority'];
+                        // $done = $_POST['done'];
                         
                     // //data naar database versturen
                     //     $query = "INSERT INTO todo (id, userId, name, priority, done) 
                     //         VALUES ('$itemid', '$currentuserid', '$name', '$image', '$done')";
 
-                    DB::insert('insert into todo (id, userId, name, priority, done) values (?, ?, ?, ?, ?)', [$itemid, $currentuserid, $name, $image, $done]);
+                    // DB::insert('insert into todo (id, userId, name, priority, done) values (?, ?, ?, ?, ?)', [$itemid, $currentuserid, $name, $image, $done]);
 
 
                     // heidisql_query($db, $query);
@@ -65,53 +66,52 @@
                     //terugsturen naar zelfde pagina
                     // header('location: app.blade.php');
                     // exit;
-                    }
+                    //}
                     ?>
 
-                    <form action="home.blade.php" method="post">
-                    <?php $ids = DB::table('todo')->pluck('id'); //get the last id from database
-                    foreach($ids as $id) {
-                    }?>
-                    <input type="hidden" name="id" value={{$id+1}}> <!-- last id from database + 1 = new id -->
-                    <?php $userId = Auth::user()->id ?>
-                    <input type="hidden" name="userId" value={{$userId}}> <!-- add the user id -->
-                    New:
-                    <input type="text" name="name" value=""><br> <!-- new to do item -->
-                    Priority:
-                    <input type="radio" name="priority" value="1" checked> High <!-- which priority -->
-                    <input type="radio" name="priority" value="2"> Medium
-                    <input type="radio" name="priority" value="3"> Low <br>
+                    <form action="{{ route('todo.save') }}" method="post">
+                        <?php //$ids = DB::table('todo')->pluck('id'); //get the last id from database
+                        //foreach($ids as $id) {
+                        //}?>
 
-                    <input type="hidden" name="done" value="0"> <!-- if you make a new item it's never directly done -->
-                    <input type="submit" value="Save">
-                    </form><br>
+                        <!-- <input type="hidden" name="id" value=<?php //echo $id+1; ?>> last id from database + 1 = new id -->
+                        <?php //$userId = Auth::user()->id ?>
+                        <!-- <input type="hidden" name="userId" value=<?php //$userId; ?>> add the user id -->
+                        
+                        <label>New:</label>
+                        <input type="text" name="name" value=""><br> <!-- new to do item -->
+                        
+                        <label>Priority:</label>
+                        <input type="radio" name="priority" value="1" checked> High <!-- which priority -->
+                        <input type="radio" name="priority" value="2"> Medium
+                        <input type="radio" name="priority" value="3"> Low <br>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                        <!-- <input type="hidden" name="done" value="0"> if you make a new item it's never directly done -->
+                        
+                        <input type="submit" value="Save">
+                    
+                    </form>
+                    
+                    <br>
 
                     <?php $userId = Auth::user()->id ?>
-                    <?php $names = DB::table('todo')->where('userId', $userId)->pluck('name');
-                    foreach ($names as $name) {?>
-                        <li>{{ $name }}</li> <!-- printing the to do list -->
-                    <?php
-                    }
-                    ?>
+
+                    @foreach($todos as $todo)
+                        <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}</li>
+                    @endforeach
+                        
+                    <?php // $names = DB::table('todo')->where('userId', $userId)->pluck('name');
+                    //foreach ($names as $name) {?>
+                    <!-- <li><?php //echo $name; ?></li> printing the to do list -->
+                    <?php //} ?> 
 
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">Summer!</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <img class="img-fluid" src="hawaii.jpg" alt="Hawaii">
-                </div>
-            </div>
-        </div>
+        @include('home.summer-partial')
 
     </div>
 </div>
