@@ -10545,11 +10545,6 @@ body {
   color: green;
 }
 
-img {
-  height: 20px;
-  width: 20px;
-}
-
 .navbar-laravel {
   background-color: #b3b5b8;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

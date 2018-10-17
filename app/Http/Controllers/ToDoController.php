@@ -23,4 +23,22 @@ class ToDoController extends Controller
         // Redirect to homepage
         return redirect()->route('home');
     }
+
+    public function update(Request $request)
+    {
+        $todo = ToDo::where('id', '=', $request->id)->first();
+            if ($todo->done === 0){
+                $todo->done = 1;
+            }
+            else {
+                $todo->done = 0;
+            }
+
+        // Save the new record
+        $todo->save();
+
+        // Redirect to homepage
+        return redirect()->route('home');
+    }
+
 }

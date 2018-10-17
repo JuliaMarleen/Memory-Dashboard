@@ -89,7 +89,6 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                         <!-- <input type="hidden" name="done" value="0"> if you make a new item it's never directly done -->
-                        
                         <input type="submit" value="Save">
                     
                     </form>
@@ -99,8 +98,12 @@
                     <?php $userId = Auth::user()->id ?>
 
                     @foreach($todos->where('userId', $userId) as $todo) 
-                        <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}<img src="images/done{{$todo->done}}.png" alt="done"></li>
-                        <img src="images/done1.png" alt="done">
+                    <form action="{{ route('todo.update') }}" method="post">
+                        <input type="hidden" name="id" value="{{ $todo->id }}" />
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}<img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="done"></li>
+                        <input type="submit" value="done">
+                    </form>
                     @endforeach
                         
                     <?php // $names = DB::table('todo')->where('userId', $userId)->pluck('name');
