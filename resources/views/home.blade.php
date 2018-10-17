@@ -98,7 +98,7 @@
 
                     <?php $userId = Auth::user()->id ?>
 
-                    @foreach($todos as $todo)
+                    @foreach($todos as $todo) 
                         <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}</li>
                     @endforeach
                         
