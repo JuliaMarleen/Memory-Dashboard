@@ -99,7 +99,8 @@
                     <?php $userId = Auth::user()->id ?>
 
                     @foreach($todos->where('userId', $userId) as $todo) 
-                        <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}</li>
+                        <li class="priority{{ $todo->priority }}">{{ $todo->priority }} {{ $todo->name }}<img src="images/done{{$todo->done}}.png" alt="done"></li>
+                        <img src="images/done1.png" alt="done">
                     @endforeach
                         
                     <?php // $names = DB::table('todo')->where('userId', $userId)->pluck('name');
@@ -130,7 +131,7 @@
                     @endif
 
                     <li>Zonnig</li>
-                    <img class="img-fluid" src="zon.jpg" alt="Zon">
+                    <img class="img-fluid" src="images/zon.jpg" alt="Zon">
                 </div>
             </div>
         </div>

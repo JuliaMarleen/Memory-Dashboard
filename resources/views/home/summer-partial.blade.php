@@ -8,7 +8,7 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <img class="img-fluid" src="hawaii.jpg" alt="Hawaii">
+            <img class="img-fluid" src="images/hawaii.jpg" alt="Hawaii">
         </div>
     </div>
 </div>
