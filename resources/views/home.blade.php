@@ -95,8 +95,18 @@
 
                     <?php $userId = Auth::user()->id ?>
 
-                    
-                    @foreach($todos->where('userId', $userId) as $todo) 
+                    {{!!filter(){!!}}
+                    <form action="{{ route('todo.filter') }}" method="post">
+                    <label>Priority:</label>
+                        <input type="radio" name="priority" value="0" checked> All
+                        <input type="radio" name="priority" value="1"> High <!-- which priority -->
+                        <input type="radio" name="priority" value="2"> Medium
+                        <input type="radio" name="priority" value="3"> Low <br>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="submit" value="Zoek">
+                    </form>
+
+                    @foreach($todos->where('userId', $userId) $priorityfilter as $todo) 
                     <form action="{{ route('todo.update') }}" method="post">
                         <input type="hidden" name="id" value="{{ $todo->id }}" />
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -104,14 +114,7 @@
                         <input type="submit" value="done">
                     </form>
                     @endforeach
-                    
-                    <input type="text" id="searchTodo" onkeyup="myFunction()" placeholder="Search to do..">
-
-                    <ul id="todolist">
-                        <li>appel</li>
-                        <li>paprika</li>
-                        <li>banaan</li>
-                    </ul>
+                    {{!!}!!}}
                         
                     <?php // $names = DB::table('todo')->where('userId', $userId)->pluck('name');
                     //foreach ($names as $name) {?>

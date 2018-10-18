@@ -41,5 +41,20 @@ class ToDoController extends Controller
         return redirect()->route('home');
     }
 
-}
+    public function filter(Request $request){
+        if ($request->priority = 1){
+            $priorityFilter = "->where('priority', 1)";
+        }
+        if ($request->priority = 2){
+            $priorityFilter = "->where('priority', 2)";
+        }
+        if ($request->priority = 3){
+            $priorityFilter = "->where('priority', 3)";
+        }
+        else{
+            $priorityFilter = "";
+        }
+    }
 
+
+}
