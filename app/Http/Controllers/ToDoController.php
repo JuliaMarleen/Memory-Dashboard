@@ -41,20 +41,25 @@ class ToDoController extends Controller
         return redirect()->route('home');
     }
 
-    public function filter(Request $request){
-        if ($request->priority = 1){
-            $priorityFilter = "->where('priority', 1)";
-        }
-        if ($request->priority = 2){
-            $priorityFilter = "->where('priority', 2)";
-        }
-        if ($request->priority = 3){
-            $priorityFilter = "->where('priority', 3)";
-        }
-        else{
-            $priorityFilter = "";
-        }
+    public function delete(Request $request)
+    {
+        $todo = ToDo::where('id', '=', $request->id)->delete();
+
+        // Redirect to homepage
+        return redirect()->route('home');
     }
 
+    // public function sort(Request $request){
+    //     $todo = ToDo::where('id', '=', $request->id)->first();
+    //     // $collection = collect([
+    //     //     ['name' => 'Desk', 'price' => 200],
+    //     //     ['name' => 'Chair', 'price' => 100],
+    //     //     ['name' => 'Bookcase', 'price' => 150],
+    //     // ]);
+        
+    //     $sorted = $collection->sortBy('price');
+        
+    //     $sorted->values()->all();
+    // }
 
 }

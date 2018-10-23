@@ -25,6 +25,8 @@ Route::post('/todo/update', 'ToDoController@update')->name('todo.update');
 
 Route::post('/todo/filter', 'ToDoController@filter')->name('todo.filter');
 
+Route::post('/todo/delete', 'ToDoController@delete')->name('todo.delete');
+
 // Route::prefix('/products')->group
 //     Route::get('/', ['uses' => 'PhotoController@index']);
 //     Route::get('/', )
