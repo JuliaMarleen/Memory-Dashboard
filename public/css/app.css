@@ -10546,13 +10546,17 @@ body {
 }
 
 .done {
-  float: right;
-  width: 30px;
+  width: 70px;
 }
 
 .delete {
-  float: right;
-  width: 30px;
+  width: 70px;
+}
+
+li {
+  width: 170px;
+  height: 50px;
+  list-style: none;
 }
 
 .navbar-laravel {

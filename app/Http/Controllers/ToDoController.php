@@ -49,17 +49,17 @@ class ToDoController extends Controller
         return redirect()->route('home');
     }
 
-    // public function sort(Request $request){
-    //     $todo = ToDo::where('id', '=', $request->id)->first();
-    //     // $collection = collect([
-    //     //     ['name' => 'Desk', 'price' => 200],
-    //     //     ['name' => 'Chair', 'price' => 100],
-    //     //     ['name' => 'Bookcase', 'price' => 150],
-    //     // ]);
+    public function filter(Request $request){
+        if ($request->filtervalue = ''){
+            exit;
+        }
+        else{
+            $filtered = $todo->filter(function ($request, $key) {
+                return $request->filtervalue = 'priority';
+            });
+        }
         
-    //     $sorted = $collection->sortBy('price');
-        
-    //     $sorted->values()->all();
-    // }
+        $filtered->all();
+    }
 
 }

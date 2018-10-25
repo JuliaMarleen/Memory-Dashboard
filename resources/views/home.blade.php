@@ -95,11 +95,18 @@
 
                     <?php $userId = Auth::user()->id ?>
 
+                    <form action="{{ route('todo.filter') }}" method="post">
+                        <label>Filter:</label>
+                        <input type="text" name="filtervalue" value=""><br>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">Filter</button>
+                    </form>
+
                     @foreach($todos->where('userId', $userId) as $todo)
-                    <div class="name">
-                        <li class="priority{{ $todo->priority }}">{{ $todo->name }}<img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="done"></li>
-                    </div>
                     <div class="d-flex">
+                        <div class="name">
+                            <li class="priority{{ $todo->priority }} lead">{{ $todo->name }}<img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="done"></li>
+                        </div>
                         <div class="done">
                             <form action="{{ route('todo.update') }}" method="post">
                                 <input type="hidden" name="id" value="{{ $todo->id }}" />
