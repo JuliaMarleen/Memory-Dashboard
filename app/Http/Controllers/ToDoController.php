@@ -50,13 +50,13 @@ class ToDoController extends Controller
     }
 
     public function filter(Request $request){
-        if ($request->filtervalue = ''){
-            exit;
-        }
-        else{
+        if ($request->filtervalue != ''){
             $filtered = $todo->filter(function ($request, $key) {
                 return $request->filtervalue = 'priority';
             });
+        }
+        else{
+            exit;
         }
         
         $filtered->all();
