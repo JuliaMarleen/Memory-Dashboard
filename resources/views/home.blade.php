@@ -102,7 +102,7 @@
                         <button class="btn btn-primary" type="submit">Filter</button>
                     </form>
 
-                    @foreach($todos->where('userId', $userId) as $todo)
+                    @foreach($todos->where('userId', 'priority', $userId, '$priorityfilter') as $todo)
                     <div class="d-flex">
                         <div class="name">
                             <li class="priority{{ $todo->priority }} lead">{{ $todo->name }}<img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="done"></li>
@@ -111,14 +111,16 @@
                             <form action="{{ route('todo.update') }}" method="post">
                                 <input type="hidden" name="id" value="{{ $todo->id }}" />
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <button class="btn btn-primary" type="submit">Done</button>
+                                <button class="btn btn-primary" type="submit">
+                                    {{ ($todo->done) ? 'Undo' : 'Done' }}
+                                </button>
                             </form>
                         </div>
                         <div class="delete">
                             <form action="{{ route('todo.delete') }}" method="post">
                                 <input type="hidden" name="id" value="{{ $todo->id }}" />
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input class="btn btn-danger" type="submit" value="delete">
+                                <input class="btn btn-danger" type="submit" value="Delete">
                             </form>
                         </div>
                     </div>

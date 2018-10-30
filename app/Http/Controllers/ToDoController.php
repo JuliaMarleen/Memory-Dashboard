@@ -50,16 +50,23 @@ class ToDoController extends Controller
     }
 
     public function filter(Request $request){
-        if ($request->filtervalue != ''){
-            $filtered = $todo->filter(function ($request, $key) {
-                return $request->filtervalue = 'priority';
-            });
+        if ($request->filtervalue == 1){
+            $priorityfilter = 1;
+        }
+        if ($request->filtervalue == 2){
+            $priorityfilter = 2;
+        }
+        if ($request->filtervalue == 3){
+            $priorityfilter = 3;
         }
         else{
-            exit;
+            $priorityfilter = 1 && 2 && 3;
         }
         
-        $filtered->all();
+        // $filtered->all();
+
+        // Redirect to homepage
+        return redirect()->route('home');
     }
 
 }
