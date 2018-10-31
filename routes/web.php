@@ -25,6 +25,10 @@ Route::post('/todo/update', 'ToDoController@update')->name('todo.update');
 
 Route::post('/todo/filter', 'ToDoController@filter')->name('todo.filter');
 
+Route::post('/todo/search', 'ToDoController@search')->name('todo.search');
+
+Route::post('/todo/all', 'ToDoController@all')->name('todo.all');
+
 Route::post('/todo/delete', 'ToDoController@delete')->name('todo.delete');
 
 // Route::prefix('/products')->group

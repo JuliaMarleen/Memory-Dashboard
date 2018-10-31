@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\ToDo;
 
 class ToDoController extends Controller
@@ -50,23 +51,33 @@ class ToDoController extends Controller
     }
 
     public function filter(Request $request){
-        if ($request->filtervalue == 1){
-            $priorityfilter = 1;
+
+        $filter = $request->get('filtervalue');
+
+        if ($filter == 1 || 2 || 3){
+            $todos = ToDo::where('userId', Auth::user()->id)->where('priority', $filter)->get();
+            // Redirect to homepage
+            return view('home')->with('todos', $todos);
+        }else{
+            $todos = ToDo::where('userId', Auth::user()->id)->get(); 
+            return view('home', compact('todos'));
         }
-        if ($request->filtervalue == 2){
-            $priorityfilter = 2;
-        }
-        if ($request->filtervalue == 3){
-            $priorityfilter = 3;
-        }
-        else{
-            $priorityfilter = 1 && 2 && 3;
-        }
-        
-        // $filtered->all();
+    }
+
+    public function search(Request $request){
+
+        $search = $request->get('searchvalue');
+
+        $todos = ToDo::where('userId', Auth::user()->id)->where('name', 'like', '%' . $search . '%')->get();
 
         // Redirect to homepage
-        return redirect()->route('home');
+        return view('home')->with('todos', $todos);
+    }
+
+    public function all(Request $request){
+        $todos = ToDo::where('userId', Auth::user()->id)->get(); 
+        
+        return view('home', compact('todos'));
     }
 
 }

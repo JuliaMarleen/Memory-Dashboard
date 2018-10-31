@@ -93,7 +93,12 @@
                     </form>
                     <br>
 
-                    <?php $userId = Auth::user()->id ?>
+                    <form action="{{ route('todo.search') }}" method="post">
+                        <label>Search:</label>
+                        <input type="text" name="searchvalue" value=""><br>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
 
                     <form action="{{ route('todo.filter') }}" method="post">
                         <label>Filter:</label>
@@ -102,10 +107,28 @@
                         <button class="btn btn-primary" type="submit">Filter</button>
                     </form>
 
-                    @foreach($todos->where('userId', 'priority', $userId, '$priorityfilter') as $todo)
+                    <form action="{{ route('todo.filter') }}" method="post">
+                        <select name="filtervalue">
+                        <label>Filter:</label>
+                            <option value="0">All</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">Filter</button>
+                    </form>
+
+                    <form action="{{ route('todo.all') }}" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">All</button>
+                    </form>
+
+                    @foreach($todos as $todo)
                     <div class="d-flex">
                         <div class="name">
-                            <li class="priority{{ $todo->priority }} lead">{{ $todo->name }}<img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="done"></li>
+                            <li class="priority{{ $todo->priority }} lead">{{ $todo->name }}
+                            <img style="height: 20px; width: 20px;" src="images/done{{$todo->done}}.png" alt="{{ ($todo->done) ? 'Undo' : 'Done' }}"></li>
                         </div>
                         <div class="done">
                             <form action="{{ route('todo.update') }}" method="post">
