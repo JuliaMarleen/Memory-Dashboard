@@ -10471,7 +10471,6 @@ a.text-dark:focus {
   }
 }
 
-html,
 body {
   background-color: lightblue;
   color: #235872;
@@ -10481,18 +10480,15 @@ body {
   margin: 0;
 }
 
-html0,
-body0 {
-  background-color: lightblue;
-}
-
-html1,
-body1 {
+body.bg-0 {
   background-color: pink;
 }
 
-html2,
-body2 {
+body.bg-1 {
+  background-color: lightblue;
+}
+
+body.bg-2 {
   background-color: greenyellow;
 }
 

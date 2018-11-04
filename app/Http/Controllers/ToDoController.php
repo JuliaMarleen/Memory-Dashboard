@@ -78,13 +78,13 @@ class ToDoController extends Controller
         $todos = ToDo::where('userId', Auth::user()->id)->where('name', 'like', '%' . $search . '%')->orwhere('priority', 'like', '%' . $search . '%')->get();
 
         // Redirect to homepage
-        return view('home')->with('todos', $todos);
+        return redirect('home')->with('todos', $todos);
     }
 
     public function all(Request $request){
         $todos = ToDo::where('userId', Auth::user()->id)->get(); 
         
-        return view('home', compact('todos'));
+        return redirect('home')->with(['todos' => $todos]);
     }
 
 }

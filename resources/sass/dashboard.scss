@@ -1,17 +1,18 @@
-html, body {
+body {
     background-color: lightblue;
     color: #235872;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
     height: 100vh;
     margin: 0;
-    &0{
-        background-color: lightblue;
-    }
-    &1{
+    
+    &.bg-0{
         background-color: pink;
     }
-    &2{
+    &.bg-1{
+        background-color: lightblue;
+    }
+    &.bg-2{
         background-color: greenyellow;
     }
 }

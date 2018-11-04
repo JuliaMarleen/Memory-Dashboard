@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ToDo;
 use App\Slogan;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,14 @@ class HomeController extends Controller
         }
          
         $motivationalslogan = Slogan::where('id', 1)->get(); 
+
+        if (Auth::user()->id = null){
+            $color->color = 0;
+        }else{
+            $color = User::where('id', Auth::user()->id)->get();
+        }
+
         
-        return view('home', compact('todos', 'motivationalslogan'));
+        return view('home', compact('todos', 'motivationalslogan', 'color'));
     }
 }

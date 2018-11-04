@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ToDo;
+use App\User;
 
 class ColorController extends Controller
 {
@@ -33,17 +34,18 @@ class ColorController extends Controller
 
     public function update(Request $request)
     {
-        $todo = ToDo::where('userId', Auth::user()->id)->get();
-        $number = $todo.length;
-            if ($number > 5){
-                $user->color = $request->color;
-            }
-            else {
-                return redirect()->route('home');
-            }
+        $todo = ToDo::where('userId', Auth::user()->id)->count();
 
-        // Save the new record
-        $todo->save();
+        // $number = $todo.length;
+        if ($todo >= 5){
+            
+            $user = User::find(Auth::user()->id);
+            $user->color = $request->color;
+            $user->save();
+        }
+        else {
+            return redirect()->route('home');
+        }
 
         // Redirect to homepage
         return redirect()->route('home');
