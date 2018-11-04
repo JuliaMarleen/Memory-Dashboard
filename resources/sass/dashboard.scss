@@ -7,6 +7,36 @@ html, body {
     margin: 0;
 }
 
+.navbar-laravel {
+    background-color: rgb(179, 181, 184);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }  
+
+.edit{
+    &0{
+        visibility: hidden;
+        float: right;
+    }
+    &1{
+        visibility: visible;
+        float: right;
+    }
+}
+
+.edit1{
+    float: right;
+}
+
+.newinputfield{
+    width: 500px;
+}
+
+.thumbnail{
+    height: 70px;
+    width: 100px;
+    margin: 20px;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -53,26 +83,29 @@ html, body {
     margin-bottom: 40px;
 }
 
+.editcard{
+    width: 550px;
+}
+
 .name{
     margin-top: 5px;
+    img{
+        float: right;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
 }
 
-.name img{
-    float: right;
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-.priority1{
+.priority{
+    &1{
     color: red;
-}
-
-.priority2{
-    color: blue;
-}
-
-.priority3{
-    color: green;
+    }
+    &2{
+        color: blue;
+    }
+    &3{
+        color: green;
+    }
 }
 
 .done{

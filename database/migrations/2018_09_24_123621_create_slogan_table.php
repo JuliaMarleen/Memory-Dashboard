@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMemoriesTable extends Migration
+class CreateSloganTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMemoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('memories', function (Blueprint $table) {
+        Schema::create('slogan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
-            $table->string('name');
-            $table->integer('priority');
+            $table->string('title');
+            $table->string('slogan');
+            $table->integer('image');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMemoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memories');
+        Schema::dropIfExists('slogan');
     }
 }

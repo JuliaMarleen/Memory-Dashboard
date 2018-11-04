@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ToDo;
+use App\Slogan;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ class HomeController extends Controller
     {
         // All todo's in an array
         $todos = ToDo::where('userId', Auth::user()->id)->get(); 
+        $motivationalslogan = Slogan::where('id', 1)->get(); 
+       // $slogan = DB::table('slogan')->value('title');
         
-        return view('home', compact('todos'));
+        return view('home', compact('todos', 'motivationalslogan'));
     }
 }

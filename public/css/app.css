@@ -10481,6 +10481,36 @@ body {
   margin: 0;
 }
 
+.navbar-laravel {
+  background-color: #b3b5b8;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.edit0 {
+  visibility: hidden;
+  float: right;
+}
+
+.edit1 {
+  visibility: visible;
+  float: right;
+}
+
+.edit1 {
+  float: right;
+}
+
+.newinputfield {
+  width: 500px;
+}
+
+.thumbnail {
+  height: 70px;
+  width: 100px;
+  margin: 20px;
+}
+
 .full-height {
   height: 100vh;
 }
@@ -10533,6 +10563,10 @@ body {
   margin-bottom: 40px;
 }
 
+.editcard {
+  width: 550px;
+}
+
 .name {
   margin-top: 5px;
 }
@@ -10567,11 +10601,5 @@ li {
   width: 170px;
   height: 50px;
   list-style: none;
-}
-
-.navbar-laravel {
-  background-color: #b3b5b8;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 

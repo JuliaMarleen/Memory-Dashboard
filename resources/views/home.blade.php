@@ -6,7 +6,12 @@
 
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">To Remember</div>
+                <div class="card-header">
+                    @foreach($motivationalslogan as $s) 
+                    {{ $s->title }} 
+                    <a class="edit{{auth::user()->admin}}" href="edit" style="float: right;">Edit</a>
+                    @endforeach
+                </div>
 
                 <div class="card-body">
 
@@ -16,14 +21,10 @@
                         </div>
                     @endif
 
-                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }} </li>
-                    <li>{{ DB::table('memories')->where('id', '2')->value('priority') }} {{ DB::table('memories')->where('id', '2')->value('name') }} </li>
-                    <li>{{ DB::table('memories')->where('id', '3')->value('priority') }} {{ DB::table('memories')->where('id', '3')->value('name') }}</li>
-                    <li>{{ DB::table('memories')->where('id', '4')->value('priority') }} {{ DB::table('memories')->where('id', '4')->value('name') }}</li>
-                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
-                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
-                    <li>{{ DB::table('memories')->where('id', '1')->value('priority') }} {{ DB::table('memories')->where('id', '1')->value('name') }}</li>
-                
+                    @foreach($motivationalslogan as $s) 
+                    <li>{{ $s->slogan }} </li> 
+                    <img class="img-fluid" src="images/foto{{$s->image}}.jpg" alt="Zon">
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -39,35 +40,9 @@
                         </div>
                     @endif
 
-                    <?php
-                    //print_r($_POST);
-                    //var_dump($_FILES);
-                    //check of data verstuurd is
-                    // if (isset($_POST['submit'])) {
+                    <!-- //print_r($_POST);
+                    //var_dump($_FILES); -->
 
-                    //data uit formulier halen
-                        // $itemid = $_POST['id'];
-                        // $currentuserid = $_POST['userId'];
-                        // $name = $_POST['name'];
-                        // $priority = $_POST['priority'];
-                        // $done = $_POST['done'];
-                        
-                    // //data naar database versturen
-                    //     $query = "INSERT INTO todo (id, userId, name, priority, done) 
-                    //         VALUES ('$itemid', '$currentuserid', '$name', '$image', '$done')";
-
-                    // DB::insert('insert into todo (id, userId, name, priority, done) values (?, ?, ?, ?, ?)', [$itemid, $currentuserid, $name, $image, $done]);
-
-
-                    // heidisql_query($db, $query);
-                    //  //database afsluiten
-                    // heidisql_close($db);
-                    
-                    //terugsturen naar zelfde pagina
-                    // header('location: app.blade.php');
-                    // exit;
-                    //}
-                    ?>
 
                     <form action="{{ route('todo.save') }}" method="post">
                         <?php //$ids = DB::table('todo')->pluck('id'); //get the last id from database

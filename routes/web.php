@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/edit', 'EditController@index')->name('edit');
+
+Route::post('/edit/update', 'EditController@update')->name('edit.update');
+
 Route::post('/todo/save', 'ToDoController@save')->name('todo.save');
 
 Route::post('/todo/update', 'ToDoController@update')->name('todo.update');
@@ -30,6 +34,10 @@ Route::post('/todo/search', 'ToDoController@search')->name('todo.search');
 Route::post('/todo/all', 'ToDoController@all')->name('todo.all');
 
 Route::post('/todo/delete', 'ToDoController@delete')->name('todo.delete');
+
+Route::get('admin_area', ['middleware' => 'admin', function () {
+    //
+}]);
 
 // Route::prefix('/products')->group
 //     Route::get('/', ['uses' => 'PhotoController@index']);
