@@ -10481,18 +10481,18 @@ body {
   margin: 0;
 }
 
+html0,
+body0 {
+  background-color: lightblue;
+}
+
 html1,
 body1 {
-  background-color: lightblue;
+  background-color: pink;
 }
 
 html2,
 body2 {
-  background-color: pink;
-}
-
-html3,
-body3 {
   background-color: greenyellow;
 }
 

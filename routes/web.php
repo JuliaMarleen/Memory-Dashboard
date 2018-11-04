@@ -31,6 +31,8 @@ Route::post('/todo/all', 'ToDoController@all')->name('todo.all');
 
 Route::post('/todo/delete', 'ToDoController@delete')->name('todo.delete');
 
+Route::post('/color/update', 'ColorController@update')->name('color.update');
+
 Route::group(['prefix' =>  'admin', 'middleware' => 'admin'], function(){
     Route::get('edit', 'EditController@index')->name('edit');
     Route::post('edit/update', 'EditController@update')->name('edit.update');

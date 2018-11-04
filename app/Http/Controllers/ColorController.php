@@ -36,11 +36,7 @@ class ColorController extends Controller
         $todo = ToDo::where('userId', Auth::user()->id)->get();
         $number = $todo.length;
             if ($number > 5){
-                $todo->done = 1;
-
-
-
-                
+                $user->color = $request->color;
             }
             else {
                 return redirect()->route('home');
