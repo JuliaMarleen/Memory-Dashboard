@@ -52,16 +52,22 @@ class ToDoController extends Controller
 
     public function filter(Request $request){
 
-        $filter = $request->get('filtervalue');
+        $filter = $request->filtervalue;
 
-        if ($filter == 1 || 2 || 3){
+        if ($filter == 1 || $filter == 2 || $filter == 3) 
+        {
             $todos = ToDo::where('userId', Auth::user()->id)->where('priority', $filter)->get();
             // Redirect to homepage
-            return view('home')->with('todos', $todos);
-        }else{
-            $todos = ToDo::where('userId', Auth::user()->id)->get(); 
-            return view('home', compact('todos'));
+            //return view('home')->with('todos', $todos);
         }
+        else
+        {
+            $todos = ToDo::where('userId', Auth::user()->id)->get(); 
+            //return view('home', compact('todos'));
+        }
+
+        return redirect('home')->with(['todos' => $todos]);
+
     }
 
     public function search(Request $request){

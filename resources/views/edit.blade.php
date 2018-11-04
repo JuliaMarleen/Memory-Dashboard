@@ -29,10 +29,9 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="submit" value="Save">
                         @endforeach
-
-                        1<img class="img-fluid thumbnail" src="images/foto1.jpg" alt="power">
-                        2<img class="img-fluid thumbnail" src="images/foto2.jpg" alt="heart">
-                        3<img class="img-fluid thumbnail" src="images/foto3.jpg" alt="bulb">
+                        1<img class="img-fluid thumbnail" src="{{ asset('images/foto1.jpg') }}" alt="power">
+                        2<img class="img-fluid thumbnail" src="{{ asset('images/foto2.jpg') }}" alt="heart">
+                        3<img class="img-fluid thumbnail" src="{{ asset('images/foto3.jpg') }}" alt="bulb">
                     </form> 
                 </div>
             </div>
