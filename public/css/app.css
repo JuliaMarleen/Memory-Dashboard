@@ -10481,6 +10481,21 @@ body {
   margin: 0;
 }
 
+html1,
+body1 {
+  background-color: lightblue;
+}
+
+html2,
+body2 {
+  background-color: pink;
+}
+
+html3,
+body3 {
+  background-color: greenyellow;
+}
+
 .navbar-laravel {
   background-color: #b3b5b8;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

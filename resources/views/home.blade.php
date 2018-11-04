@@ -45,9 +45,9 @@
                         <select name="filtervalue">
                         <label>Filter:</label>
                             <option value="0">All</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <option value="1">High</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Low</option>
                         </select>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <button class="btn btn-primary" type="submit">Filter</button>
@@ -136,7 +136,7 @@
 
                 <div class="col-md-4">
             <div class="card">
-                <div class="card-header">People to talk to</div>
+                <div class="card-header">Background color</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -144,7 +144,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <li>Sarah</li>
+                    <p>You can change your background color if you have 5 items in your To Do list!</p>
+                    <form action="{{ route('todo.update') }}" method="post">
+                        <input type="hidden" name="id" value="{{ $todo->id }}" />
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">Pink</button>
+                    </form>
+                    <form action="{{ route('todo.update') }}" method="post">
+                        <input type="hidden" name="id" value="{{ $todo->id }}" />
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <button class="btn btn-primary" type="submit">Blue</button>
+                    </form>
+
                 </div>
             </div>
         </div>

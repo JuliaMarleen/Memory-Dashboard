@@ -27,13 +27,14 @@ class ToDoController extends Controller
 
     public function update(Request $request)
     {
-        $todo = ToDo::where('id', '=', $request->id)->first();
-            if ($todo->done === 0){
-                $todo->done = 1;
-            }
-            else {
-                $todo->done = 0;
-            }
+        $todo = ToDo::where('id', '=', $request->id)->where('userId', \Auth::user()->id)->first();
+
+        if ($todo->done === 0){
+            $todo->done = 1;
+        }
+        else {
+            $todo->done = 0;
+        }
 
         // Save the new record
         $todo->save();
@@ -44,7 +45,7 @@ class ToDoController extends Controller
 
     public function delete(Request $request)
     {
-        $todo = ToDo::where('id', '=', $request->id)->delete();
+        $todo = ToDo::where('id', '=', $request->id)->where('userId', \Auth::user()->id)->delete();
 
         // Redirect to homepage
         return redirect()->route('home');
@@ -74,7 +75,7 @@ class ToDoController extends Controller
 
         $search = $request->get('searchvalue');
 
-        $todos = ToDo::where('userId', Auth::user()->id)->where('name', 'like', '%' . $search . '%')->get();
+        $todos = ToDo::where('userId', Auth::user()->id)->where('name', 'like', '%' . $search . '%')->orwhere('priority', 'like', '%' . $search . '%')->get();
 
         // Redirect to homepage
         return view('home')->with('todos', $todos);

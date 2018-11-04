@@ -5,6 +5,15 @@ html, body {
     font-weight: 200;
     height: 100vh;
     margin: 0;
+    &1{
+        background-color: lightblue;
+    }
+    &2{
+        background-color: pink;
+    }
+    &3{
+        background-color: greenyellow;
+    }
 }
 
 .navbar-laravel {
