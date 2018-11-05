@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="bg-{{ Auth::user()->color }}">
+<body class="@if(Auth::check()) bg-{{ Auth::user()->color }} @endif">
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">

@@ -10481,7 +10481,7 @@ body {
 }
 
 body.bg-0 {
-  background-color: pink;
+  background-color: #ff768d;
 }
 
 body.bg-1 {
@@ -10489,7 +10489,7 @@ body.bg-1 {
 }
 
 body.bg-2 {
-  background-color: greenyellow;
+  background-color: #b9ec6d;
 }
 
 .navbar-laravel {
