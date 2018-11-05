@@ -1,5 +1,4 @@
-<div class="col-md-4">
-    <div class="card">
+
         <div class="card-header">
             @foreach($motivationalslogan as $s) 
             {{ $s->title }} 
@@ -20,5 +19,3 @@
             <img class="img-fluid" src="{{ asset('images/foto').$s->image.'.jpg' }}" alt="Zon">
             @endforeach
         </div>
-    </div>
-</div>

@@ -1,6 +1,7 @@
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.$ = window.jQuery = require('jquery');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -9,11 +10,11 @@ window.Popper = require('popper.js').default;
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
+    window.$ = window.jQuery = require('jquery');    
+    require('jquery-ui-bundle/jquery-ui.min.js');
+    require('bootstrap'); 
 } catch (e) {}
-
+  
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

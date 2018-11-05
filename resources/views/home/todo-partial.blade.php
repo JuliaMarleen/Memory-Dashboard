@@ -1,5 +1,4 @@
-<div class="col-md-4">
-    <div class="card">
+
         <div class="card-header">To do</div>
 
         <div class="card-body">
@@ -76,5 +75,3 @@
             @endforeach
 
         </div>
-    </div>
-</div>
